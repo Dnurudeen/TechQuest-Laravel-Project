@@ -35,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', 'AdminController@admin')->middleware('role:admin');
     Route::get('/admin/staffs', [AdminController::class, 'users']);
     Route::get('/admin/staffs/{id}', 'AdminController@trash')->name('delete.staff');
+    Route::get('/admin/send-email', [AdminController::class, 'sendemail']);
+    Route::post('/admin/send-email', [AdminController::class, 'send_it'])->name('send.email');
+
 
     Route::get('/admin/view-staff/{id}', [AdminController::class, 'viewstaff']);
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'editstaff']);
